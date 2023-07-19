@@ -1,18 +1,23 @@
 {
   "name": "random-stuff",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "compile": "tsc",
     "start": "yarn run compile && node ./dist/index.js",
-    "start:dev": "ts-node-dev src/index.ts"
+    "start:dev": "node --loader ts-node/esm ./src/index.ts",
+    "start:watch": "nodemon --watch src/**/*.ts --exec node --loader ts-node/esm ./src/index.ts"
   },
   "devDependencies": {
     "@types/node": "20.4.2",
     "ts-node": "10.9.1",
-    "ts-node-dev": "2.0.0",
     "typescript": "5.1.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@apollo/server": "4.7.5",
+    "graphql": "16.7.1",
+    "nodemon": "3.0.1"
+  }
 }
